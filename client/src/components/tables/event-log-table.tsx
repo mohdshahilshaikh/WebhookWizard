@@ -46,7 +46,9 @@ export function EventLogTable({ webhookId, limit = 50, showPagination = true }: 
   };
   
   // Get appropriate icon for event type
-  const getIcon = (eventType: string) => {
+  const getIcon = (eventType: string | undefined) => {
+    if (!eventType) return <Zap className="h-4 w-4 text-primary-600" />;
+    
     const type = eventType.split('.')[0];
     switch (type) {
       case 'user':
@@ -125,10 +127,10 @@ export function EventLogTable({ webhookId, limit = 50, showPagination = true }: 
                   <StatusBadge status={event.status} />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatTimestamp(event.createdAt)}
+                  {formatTimestamp(event.createdAt || undefined)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatDuration(event.duration)}
+                  {formatDuration(event.duration || undefined)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <Button

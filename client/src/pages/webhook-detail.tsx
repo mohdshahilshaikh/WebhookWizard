@@ -227,7 +227,7 @@ export default function WebhookDetail() {
                       <FormItem>
                         <FormLabel>Description</FormLabel>
                         <FormControl>
-                          <Textarea {...field} />
+                          <Textarea value={field.value || ''} onChange={field.onChange} ref={field.ref} name={field.name} onBlur={field.onBlur} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

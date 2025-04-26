@@ -88,7 +88,7 @@ export default function CreateWebhook() {
                   <FormItem>
                     <FormLabel>Description (Optional)</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Add more details about this webhook" {...field} />
+                      <Textarea placeholder="Add more details about this webhook" value={field.value || ''} onChange={field.onChange} ref={field.ref} name={field.name} onBlur={field.onBlur} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
